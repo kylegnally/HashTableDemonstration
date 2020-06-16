@@ -14,25 +14,41 @@ namespace HashTableDemonstration
 
             OurHashTable<Student> table = new OurHashTable<Student>();
 
+            string[] nameArray = new string[]
+            {
+                "William",
+                "Eloise",
+                "Elizabeth",
+                "Shannon",
+                "Benjamin",
+                "Gustav",
+                "Herlander",
+                "Paige",
+                "Kevin"
+            };
+
 
             int[] idArray = new int[]
             {
                 99999999, 99999999, 75000000, 50000000, 25000, 15000, 10000, 5000, 1
             } ;
 
-            int[] modulusResults = new int[idArray.Length];
+            int[] modulusResults = new int[idArray.Length + 1];
 
             int i = 0;
             foreach (int _id in idArray)
             {
-                modulusResults[i] = _id % 9;
+                modulusResults[i] = _id % 100;
                 s = new Student();
                 s.ID = (uint)(_id);
-
+                s.Name = nameArray[i];
                 table.Add((int)s.ID, s);
-                Console.WriteLine(modulusResults[i].ToString() + "\n");
+                //Console.WriteLine(modulusResults[i].ToString() + "\n");
+                Console.WriteLine("NAME:\t\t\t" + s.Name + "\n" + "ID:\t\t\t" + s.ID.ToString() + "\n");
                 i++;
             }
+
+            WriteAlll(table);
             
             Environment.Exit(0);
 
@@ -56,6 +72,11 @@ namespace HashTableDemonstration
             //s.ID = (uint)(97 + 9900);
 
             //table.Add((int)s.ID, s);
+        }
+
+        private static void WriteAlll(OurHashTable<Student> table)
+        {
+            
         }
     }
 }
