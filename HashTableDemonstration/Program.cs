@@ -23,13 +23,17 @@ namespace HashTableDemonstration
             int[] modulusResults = new int[idArray.Length];
 
             int i = 0;
-            foreach (int id in idArray)
+            foreach (int _id in idArray)
             {
-                modulusResults[i] = id % 9;
+                modulusResults[i] = _id % 9;
+                s = new Student();
+                s.ID = (uint)(_id);
+
+                table.Add((int)s.ID, s);
                 Console.WriteLine(modulusResults[i].ToString() + "\n");
                 i++;
             }
-
+            
             Environment.Exit(0);
 
             //for (int i = 0; i < )
@@ -41,17 +45,17 @@ namespace HashTableDemonstration
             //    table.Add((int)s.ID, s);
             //}
 
-            s = new Student();
-            s.ID = (uint)(97 + 9800);
+            //s = new Student();
+            //s.ID = (uint)(97 + 9800);
 
-            table.Add((int)s.ID, s);
+            //table.Add((int)s.ID, s);
 
-            var z = table.Get(999997, new Student { ID = 197 });
+            //var z = table.Get(999997, new Student { ID = 197 });
 
-            s = new Student();
-            s.ID = (uint)(97 + 9900);
+            //s = new Student();
+            //s.ID = (uint)(97 + 9900);
 
-            table.Add((int)s.ID, s);
+            //table.Add((int)s.ID, s);
         }
     }
 }
