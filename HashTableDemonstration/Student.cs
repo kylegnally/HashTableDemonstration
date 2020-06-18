@@ -24,9 +24,6 @@ namespace HashTableDemonstration
             }
         }
 
-        /// <summary>
-        /// Get/Set the name.  Throws exception on null assignment.
-        /// </summary>
         public string Name
         {
             get
@@ -42,6 +39,7 @@ namespace HashTableDemonstration
             }
         }
 
+
         public decimal GPA
         {
             get
@@ -54,20 +52,7 @@ namespace HashTableDemonstration
                     _gpa = value;
             }
         }
-
-        public decimal GetGPA(Random rnd)
-        {
-            // I know this won't be "sufficiently" random, but we're 
-            // only going to print to the screen with this. I only
-            // want dummy data here anyway. This is just some
-            // "give me numbers" code.
-            int fullPoint = rnd.Next(0, 4);
-            int decVals = rnd.Next(0, 100);
-            string gpa = fullPoint.ToString() + "." + decVals.ToString();
-            decimal fullGPA = decimal.Parse(gpa);
-            return fullGPA;
-        }
-
+        
         public override int GetHashCode()
         {
             string id = _id.ToString().PadLeft(8, '0');

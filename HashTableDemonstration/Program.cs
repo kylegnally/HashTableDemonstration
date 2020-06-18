@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// 
+
 namespace HashTableDemonstration
 {
     class Program
     {
         static void Main(string[] args)
-        {
+        {   
             Student s;
             OurHashTable<Student> table = new OurHashTable<Student>();
-            Random rnd = new Random();
 
+            // Let's make this a useful demonstration
             string[] names = new string[]{
                 "Taylen Hooks",
                 "Gianni Bruno",
@@ -116,54 +118,37 @@ namespace HashTableDemonstration
                 "Aston Callahan",
                 "Antoine Norton"
             };
+            Random rnd = new Random();
 
             int[] idArray = new int[]
             {
-                99999999, 99999999, 75000000, 50000000, 25000, 15000, 10000, 7823, 4599, 9999, 300567, 5000, 1
+                99999999, 99999999, 75000000, 50000000, 25000, 15000, 10000, 5000, 1
             };
 
-            //int[] idArray = IDArray(rnd);
-            rnd = new Random();
-
-            // int[] modulusResults = new int[idArray.Length + 1];
             int i = 0;
 
             foreach (int _id in idArray)
             {
-                s = new Student();
-                // modulusResults[i] = _id % 100;
-                s.ID = (uint)(_id);
-                s.Name = names[i];
-                s.GPA = s.GetGPA(rnd);
-                //s.Name = nameArray[i];
+                s = new Student {ID = (uint) (_id), Name = names[i], GPA = MakeGPA(rnd)};
                 table.Add((int)s.ID, s);
-                //Console.WriteLine(modulusResults[i].ToString() + "\n");
-                //Console.WriteLine(/*"NAME:\t\t\t" + s.Name + "\n" + */"ID:\t\t\t" + s.ID.ToString() + "\n");
-                //i++;
+                Console.WriteLine("ID NO::\t" + s.ID + "\tNAME:\t" + s.Name.ToString() + "\t" + "GPA: " + s.GPA);
+                i++;
             }
 
             Environment.Exit(0);
+        }
 
-            //for (int i = 0; i < )
-            //for (int i = 100; i < 10000; i += 100)
-            //{
-            //    s = new Student();
-            //    s.ID = (uint)(97 + i);
-
-            //    table.Add((int)s.ID, s);
-            //}
-
-            //s = new Student();
-            //s.ID = (uint)(97 + 9800);
-
-            //table.Add((int)s.ID, s);
-
-            //var z = table.Get(999997, new Student { ID = 197 });
-
-            //s = new Student();
-            //s.ID = (uint)(97 + 9900);
-
-            //table.Add((int)s.ID, s);
+        public static decimal MakeGPA(Random rnd)
+        {
+            // I know this won't be "sufficiently" random, but we're 
+            // only going to print to the screen with this. I only
+            // want dummy data here anyway. This is just some
+            // "give me numbers" code.
+            int fullPoint = rnd.Next(0, 4);
+            int decVals = rnd.Next(0, 100);
+            string gpa = fullPoint.ToString() + "." + decVals.ToString();
+            decimal fullGPA = decimal.Parse(gpa);
+            return fullGPA;
         }
 
         private static int[] IDArray(Random rnd)
