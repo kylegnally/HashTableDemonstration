@@ -117,27 +117,29 @@ namespace HashTableDemonstration
                 "Antoine Norton"
             };
 
-            //int[] idArray = new int[]
-            //{
-            //    99999999, 99999999, 75000000, 50000000, 25000, 15000, 10000, 7823, 4599, 9999, 300567, 5000, 1
-            //} ;
+            int[] idArray = new int[]
+            {
+                99999999, 99999999, 75000000, 50000000, 25000, 15000, 10000, 7823, 4599, 9999, 300567, 5000, 1
+            };
 
-            int[] idArray = IDArray(rnd);
+            //int[] idArray = IDArray(rnd);
             rnd = new Random();
 
-            int[] modulusResults = new int[idArray.Length + 1];
+            // int[] modulusResults = new int[idArray.Length + 1];
             int i = 0;
 
             foreach (int _id in idArray)
             {
                 s = new Student();
-                modulusResults[i] = _id % 100;
+                // modulusResults[i] = _id % 100;
                 s.ID = (uint)(_id);
+                s.Name = names[i];
+                s.GPA = s.GetGPA(rnd);
                 //s.Name = nameArray[i];
                 table.Add((int)s.ID, s);
                 //Console.WriteLine(modulusResults[i].ToString() + "\n");
                 //Console.WriteLine(/*"NAME:\t\t\t" + s.Name + "\n" + */"ID:\t\t\t" + s.ID.ToString() + "\n");
-                i++;
+                //i++;
             }
 
             Environment.Exit(0);
