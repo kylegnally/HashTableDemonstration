@@ -98,7 +98,6 @@ namespace HashTableDemonstration
                 else
                     throw new Exception("The table is full!");
             }
-
         }
 
         /// <summary>
