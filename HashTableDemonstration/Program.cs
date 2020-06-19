@@ -120,31 +120,37 @@ namespace HashTableDemonstration
             };
             Random rnd = new Random();
 
-            // If you want random IDs, uncomment this line....
+            // If you want to test using random IDs, uncomment this line....
             //int[] idArray = IDArray(rnd);
 
             // ... and then comment this block
             int[] idArray = new int[]
             {
-                99999999, 99999999, 75000000, 50000000, 25000, 15000, 10000, 5000, 1
+                99999999, 99999999, 75000000, 50000000, 25000, 15000, 10000, 5000, 1,
+                20000, 15783, 13452, 12336, 8833, 5587, 2364, 1201, 739, 294, 19
             };
 
+            // this is only the iterator for the names array
             int i = 0;
 
             foreach (int _id in idArray)
             {
                 s = new Student {ID = (uint) (_id), Name = names[i], GPA = MakeGPA(rnd)};
                 table.Add((int)s.ID, s);
-                Console.WriteLine("ID NO::\t" + s.ID + "\tNAME:\t" + s.Name.ToString() + "\t" + "GPA: " + s.GPA);
+                Console.WriteLine("ID NO:\t\t" + s.ID + "\t\tNAME:\t" + s.Name.ToString() + "\t\tGPA: " + s.GPA);
                 i++;
             }
 
             Environment.Exit(0);
         }
 
+        /// <summary>
+        /// Builds a random-ish GPA.
+        /// </summary>
+        /// <param name="rnd"></param>
+        /// <returns>decimal</returns>
         public static decimal MakeGPA(Random rnd)
         {
-            // make some dummy data
             int fullPoint = rnd.Next(0, 4);
             int decVals = rnd.Next(0, 100);
             string gpa = fullPoint.ToString() + "." + decVals.ToString();
@@ -152,6 +158,12 @@ namespace HashTableDemonstration
             return fullGPA;
         }
 
+        /// <summary>
+        /// Method to return a random ID between 1 and 99999999 inclusive.
+        /// See comments in Program class.
+        /// </summary>
+        /// <param name="rnd"></param>
+        /// <returns>int[]</returns>
         private static int[] IDArray(Random rnd)
         {
             int[] id = new int[100];

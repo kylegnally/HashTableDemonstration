@@ -9,8 +9,11 @@ namespace HashTableDemonstration
     class OurHashTable<T>
     {
         private KeyValuePair<int, T>[] _data;
+
+        public int Collisions { get; set; }
         public OurHashTable()
         {
+            Collisions = 0;
             _data = new KeyValuePair<int, T>[100];
         }
 
@@ -22,6 +25,7 @@ namespace HashTableDemonstration
         /// <returns></returns>
         private int FindEmptyIndex(int key, int hashCode)
         {
+            Collisions++;
             int end = _data.Length - 1;
             int index = hashCode;
             int pos = index + 1;
@@ -48,6 +52,12 @@ namespace HashTableDemonstration
             return pos;
         }
 
+        /// <summary>
+        /// Finds an index given a key and a hash code.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="hashCode"></param>
+        /// <returns>int</returns>
         private int FindIndex(int key, int hashCode)
         {
             int end = _data.Length - 1;
@@ -80,7 +90,7 @@ namespace HashTableDemonstration
         }
 
         /// <summary>
-        /// Adds an elment to the hashtable using the linear probing method to handle collisions
+        /// Adds an element to the hashtable using the linear probing method to handle collisions
         /// </summary>
         /// <param name="element"></param>
         public void Add(int key, T element)
