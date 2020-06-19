@@ -55,7 +55,8 @@ namespace HashTableDemonstration
         
         public override int GetHashCode()
         {
-            string id = _id.ToString().PadLeft(8, '0');
+            uint modId = (_id % 999);
+            string id = modId.ToString().PadLeft(8, '0');
             id = id.Substring(6, 2);
             return int.Parse(id);
         }

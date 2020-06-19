@@ -15,7 +15,7 @@ namespace HashTableDemonstration
             Student s;
             OurHashTable<Student> table = new OurHashTable<Student>();
 
-            // Let's make this a useful demonstration
+            // Let's do something real-world and add names to these
             string[] names = new string[]{
                 "Taylen Hooks",
                 "Gianni Bruno",
@@ -120,6 +120,10 @@ namespace HashTableDemonstration
             };
             Random rnd = new Random();
 
+            // If you want random IDs, uncomment this line....
+            //int[] idArray = IDArray(rnd);
+
+            // ... and then comment this block
             int[] idArray = new int[]
             {
                 99999999, 99999999, 75000000, 50000000, 25000, 15000, 10000, 5000, 1
@@ -140,10 +144,7 @@ namespace HashTableDemonstration
 
         public static decimal MakeGPA(Random rnd)
         {
-            // I know this won't be "sufficiently" random, but we're 
-            // only going to print to the screen with this. I only
-            // want dummy data here anyway. This is just some
-            // "give me numbers" code.
+            // make some dummy data
             int fullPoint = rnd.Next(0, 4);
             int decVals = rnd.Next(0, 100);
             string gpa = fullPoint.ToString() + "." + decVals.ToString();
