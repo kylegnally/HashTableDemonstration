@@ -55,7 +55,6 @@ namespace HashTableDemonstration
         
         public override int GetHashCode()
         {
-            // let's use this and hopefully scramble the numbers a bit more
             uint modId = (_id % 999);
             string id = modId.ToString().PadLeft(8, '0');
             id = id.Substring(6, 2);
