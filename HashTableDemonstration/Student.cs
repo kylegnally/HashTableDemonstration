@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HashTableDemonstration
 {
+    /// <summary>
+    /// Model for a student.
+    /// </summary>
     class Student
     {
         private uint _id;
@@ -53,6 +52,10 @@ namespace HashTableDemonstration
             }
         }
         
+        /// <summary>
+        /// Gets a hash code for the table from the student ID.
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             uint modId = (_id % 999);
